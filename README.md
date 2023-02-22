@@ -7,4 +7,4 @@ The project is built using Python and the Dash framework, with the sentiment ana
 
 To use the Financial YouTube Sentiment Analyzor UI, simply clone the repository and run the app.py file. You'll need to setup your own MongoDB cluster,db,collection then dataset.
 
-This project was created by cdemoll and is available under the MIT license. Contributions and feedback are welcome! DO NOT HESITATE TO FORK!
+This project was created by cdemoll and is available under the AGPL V3 license. Contributions and feedback are welcome! DO NOT HESITATE TO FORK!
