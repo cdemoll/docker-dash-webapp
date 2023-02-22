@@ -21,3 +21,4 @@ def populateCPie(n_intervals):
                hover_data=['Sentiment_value', 'Text'], color='Sentiment_value',
                height=400, width=1200)
    return fig
+   
