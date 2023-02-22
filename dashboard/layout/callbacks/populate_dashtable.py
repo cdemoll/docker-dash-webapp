@@ -1,50 +1,12 @@
 from dashboard.index import app 
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output
 
 from db.conn_init import mydb
-from secret_keys import DB_GRAPH_COLLECTION, DB_VIDEOS_COLLECTION
+from secret_keys import DB_VIDEOS_COLLECTION
 
 from dash import dash_table
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 import pandas as pd
 
-
-# add callback for toggling the collapse on small screens
-@app.callback(
-    Output("navbar-collapse", "is_open"),
-    [Input("navbar-toggler", "n_clicks")],
-    [State("navbar-collapse", "is_open")],
-)
-def toggle_navbar_collapse(n, is_open):
-    if n:
-        return not is_open
-    return is_open
-
-
-@app.callback(Output('current-week-pie', 'figure'),
-            [Input('interval_db', 'n_intervals')])
-def populateCPie(n_intervals):
-    print(n_intervals)
-    cPie_coll = mydb[DB_GRAPH_COLLECTION]
-
-    df = pd.DataFrame(list(cPie_coll.find({})))
-    # Remove generated id
-    df = df.iloc[:, 1:]
-    print(df)
-
-    fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
-                    subplot_titles=['Sentiment split', 'Weighted Sentiment split'])
-
-    fig.add_trace(go.Pie(labels=df['Sentiment'].unique().tolist(),
-                        values=df['Sentiment'].value_counts(sort=False)),
-                1,1)
-
-    fig.add_trace(go.Pie(labels=df['Sentiment'].values,
-                        values=df['Sentiment_value'].values),
-                1,2)
-
-    return fig
 
 
 @app.callback(Output('random_record', 'children'),
@@ -82,4 +44,3 @@ def populate_random_record(n_intervals):
             markdown_options={"html": True},
             virtualization=False
         )]
-        

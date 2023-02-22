@@ -1,7 +1,9 @@
 from dashboard.index import app
 from dash import html, dcc
 from dashboard.index import dbc
-from dashboard.layout.callbacks import callback1
+from dashboard.layout.callbacks import nav_toggler
+from dashboard.layout.callbacks import populate_dashtable
+from dashboard.layout.callbacks import populate_cstm_pchart
 from dashboard.layout.navbar import navbar
 
 app.layout = dbc.Container(children=[
