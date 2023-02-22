@@ -12,12 +12,10 @@ import pandas as pd
 @app.callback(Output('random_record', 'children'),
             [Input('interval_db', 'n_intervals')])
 def populate_random_record(n_intervals):
-    print(n_intervals)
     collection =  mydb[DB_VIDEOS_COLLECTION]
     df = pd.DataFrame(list(collection.find({})))
     # Remove generated id
     df = df.iloc[:, 1:]
-    print(df)
 
     return[dash_table.DataTable(
         id='my-table',

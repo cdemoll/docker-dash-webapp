@@ -13,13 +13,10 @@ import pandas as pd
 @app.callback(Output('current-week-pie', 'figure'),
             [Input('interval_db', 'n_intervals')])
 def populateCPie(n_intervals):
-    print(n_intervals)
     cPie_coll = mydb[DB_GRAPH_COLLECTION]
-
     df = pd.DataFrame(list(cPie_coll.find({})))
     # Remove generated id
     df = df.iloc[:, 1:]
-    print(df)
 
     fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
                     subplot_titles=['Sentiment split', 'Weighted Sentiment split'])
