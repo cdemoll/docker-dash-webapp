@@ -1,4 +1,4 @@
-# docker-dash-webapp
+# financial_yt_sentiment_analyzor-ui
 
 ![UI capture](https://i.imgur.com/qapzgfw.png)
 
