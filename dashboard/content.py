@@ -3,10 +3,6 @@ from dash import html, dcc
 from dashboard.index import dbc
 from dashboard.layout.callbacks import callback1
 from dashboard.layout.navbar import navbar
-#######################################COMPONENTS#######################################
-
-#######################################APP#######################################
-
 
 app.layout = dbc.Container(children=[
     navbar,
