@@ -10,7 +10,7 @@ The project is built using Python and the Dash framework, with the sentiment ana
 An AWS environnement has been setup for you to take a look at the project without having to do anything else then clickign this link:  
 
 **[Access Youtube Financial Sentiment Analyzor UI](http://13.38.250.148/)**
-> **_NOTE:_**  Since AWS Free Tier is used for production limits uptime to 750hours/month, the website might not be available as the time of reading.
+> **_NOTE:_**  Since AWS Free Tier is used for production, uptime is limited to 750hours/month. The website might not be available as the time of reading.
 
 ## Configure
 
