@@ -13,20 +13,38 @@ import pandas as pd
 @app.callback(Output('current-week-pie', 'figure'),
             [Input('interval_db', 'n_intervals')])
 def populateCPie(n_intervals):
-    cPie_coll = mydb[DB_GRAPH_COLLECTION]
-    df = pd.DataFrame(list(cPie_coll.find({})))
-    # Remove generated id
-    df = df.iloc[:, 1:]
+   cPie_coll = mydb[DB_GRAPH_COLLECTION]
+   df = pd.DataFrame(list(cPie_coll.find({})))
+   # Remove generated id
+   df = df.iloc[:, 1:]
 
-    fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
-                    subplot_titles=['Sentiment split', 'Weighted Sentiment split'])
+   fig = make_subplots(
+      rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
+      subplot_titles=['Sentiment split', 'Weighted Sentiment split']
+   )
 
-    fig.add_trace(go.Pie(labels=df['Sentiment'].unique().tolist(),
-                        values=df['Sentiment'].value_counts(sort=False)),
-                1,1)
+   fig.add_trace(
+      go.Pie(
+         labels=df['Sentiment'].unique().tolist(),
+         values=df['Sentiment'].value_counts(sort=False),
+         textinfo='label+percent',
+         insidetextorientation='tangential',
+         hole=0.5,
+         name='Past week',
+         showlegend=False
+      ),
+   1,1)
 
-    fig.add_trace(go.Pie(labels=df['Sentiment'].values,
-                        values=df['Sentiment_value'].values),
-                1,2)
+   fig.add_trace(
+      go.Pie(
+         labels=df['Sentiment'].values,
+         values=df['Sentiment_value'].values,
+         textinfo='label+percent',
+         insidetextorientation='tangential',
+         hole=0.5,
+         name='Past week',
+         showlegend=False
+      ),    
+   1,2)
 
-    return fig
+   return fig
