@@ -18,7 +18,6 @@ def populateCPie(n_intervals):
    df = df.iloc[:, 1:]
 
    fig = px.bar(df, x='Sentiment', y='Sentiment_value',
-               hover_data=['Sentiment_value', 'Text'], color='Sentiment_value',
-               height=400, width=1200)
+               hover_data=['Sentiment_value', 'Text'], color='Sentiment_value')
    return fig
    
