@@ -6,7 +6,7 @@ from secret_keys import DB_VIDEOS_COLLECTION
 
 from dash import dash_table
 import pandas as pd
-
+from datetime import datetime
 
 
 @app.callback(Output('random_record', 'children'),
@@ -16,10 +16,13 @@ def populate_random_record(n_intervals):
     df = pd.DataFrame(list(collection.find({})))
     # Remove generated id
     df = df.iloc[:, 1:]
+    df = df[['uploader', 'title', 'duration', 'upload_date']]
+    df.rename(columns={'duration':'duration (sec)'}, inplace=True)
+    df['upload_date'] = df['upload_date'].apply(lambda x: datetime.strptime(x,"%Y%m%d").date())
 
     return[dash_table.DataTable(
         id='my-table',
-          columns=[{'id': x, 'name': x, 'presentation': 'markdown'} if x in ['channel', 'name'] else {'id': x, 'name': x} for x in df.columns],
+          columns=[{'id': x, 'name': x, 'presentation': 'markdown'} if x in ['uploader', 'title'] else {'id': x, 'name': x} for x in df.columns],
             data=df.to_dict('records'),
             editable=False,
             row_deletable=False,
