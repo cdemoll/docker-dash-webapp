@@ -16,7 +16,7 @@ An AWS environnement has been setup for you to take a look at the project withou
 
 > :warning: **Mandatory file not included:** ***secret_keys.py*** should contains all your login fields for MongoDB
 
-## Running the code
+## Run the code
 
 To use the Financial YouTube Sentiment Analyzor UI on your local machine, simply clone the repository and run the app.py file. You'll need to setup your own MongoDB cluster,db,collection then dataset.
 
