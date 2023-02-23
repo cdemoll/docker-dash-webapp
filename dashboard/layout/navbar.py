@@ -9,7 +9,7 @@ navbar = dbc.Navbar(
             html.A(
                 # Use row and col to control vertical alignment of logo / brand
                 dbc.Row([
-                        dbc.Col(html.Img(src=app.get_asset_url('plotly-logomark.png'), height="30px")),
+                        dbc.Col(html.Img(src=app.get_asset_url('logo-website.png'), height="50px")),
                         dbc.Col(dbc.NavbarBrand("Youtube Financial Sentiment Index", className="ms-2")),
                         dbc.Col(
                             dbc.Nav([

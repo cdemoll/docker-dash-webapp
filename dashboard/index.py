@@ -1,6 +1,7 @@
 from dash import Dash
 import dash_bootstrap_components as dbc
 
+
 external_stylesheets = [dbc.themes.COSMO, dbc.icons.BOOTSTRAP]
 app_title = "YT Findex"
 
